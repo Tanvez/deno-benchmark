@@ -17,4 +17,5 @@ COPY . .
 # Compile the main app so that it doesn't need to be compiled each startup/entry.
 RUN deno cache ./src/api.js
 
+# -A flag allows everything - security wise
 CMD ["run", "-A", "./src/api.js"]
