@@ -1,0 +1,32 @@
+version: '3'
+
+networks:
+  monitoring:
+    driver: bridge
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: deno
+    ports:
+      - 5432:5432
+    volumes:
+      - deno_db_data:/var/lib/postgresql/data
+    networks:
+      - monitoring
+
+  web:
+    build: .
+    container_name: deno-container
+    image: deno-image
+    ports:
+      - "8000:8000"
+    networks:
+      - monitoring
+
+volumes:
+  deno_db_data: {}
