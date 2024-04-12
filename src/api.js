@@ -70,30 +70,6 @@ sequelize
     console.log("Failed to sync models", err);
   });
 
-// const router = new Router();
-// router
-//   .get("/", ({ response }) => {
-//     response.body = "Hello world!";
-//   })
-//   .get("/books", async ({ response }) => {
-//     const books = await Book.findAll();
-//     response.body = books;
-//   })
-//   .get("/book/:id", async (context) => {
-//     if (context?.params?.id) {
-//       const foundBooks = await Book.findAll({
-//         where: {
-//           id: context?.params?.id,
-//         },
-//       });
-//       context.response.body = foundBooks;
-//     }
-//   });
-
-// const app = new Application();
-// app.use(router.routes());
-// app.use(router.allowedMethods());
-
 const app = express();
 app.get("/", (req, res) => {
   res.send("Welcome to the Dinosaur API!");
